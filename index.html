@@ -4,38 +4,25 @@
 	<meta charset='utf-8'>
 	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
 	<title>project | remember-my-memories</title>
-
-	<style>
-	/* 브라우저 마진과 패딩 리셋 */
-	* {margin:0;padding:0;}
-
-	/* INPUT 가리기 */
-	.section input[id*="slide"] {display:none;}
-
-	/* 슬라이드 영역 - max-width 크기를 조절해주기*/
-	.section .slidewrap {max-width:1200px;margin:0 auto;overflow:hidden;}
-	.section .slidelist {white-space:nowrap;font-size:0;}
-	.section .slidelist > li {display:inline-block;vertical-align:middle;width:100%;transition:all .5s;}
-	.section .slidelist > li > a {display:block;position:relative;}
-	.section .slidelist > li > a img {width:100%;}
-
-	/* 좌우로 넘기는 LABEL버튼에 대한 스타일 */
-	.section .slidelist label {position:absolute;z-index:1;top:50%;transform:translateY(-50%);padding:50px;cursor:pointer;}
-	.section .slidelist .left {left:30px;background:url('./img/left.png') center center / 100% no-repeat;}
-	.section .slidelist .right {right:30px;background:url('./img/right.png') center center / 100% no-repeat;}
-
-	/* INPUT 체크되면 변화값이 li까지 전달되는 스타일 */
-	.section input[id="slide01"]:checked ~ .slidewrap .slidelist > li {transform:translateX(0%);}
-	.section input[id="slide02"]:checked ~ .slidewrap .slidelist > li {transform:translateX(-100%);}
-	.section input[id="slide03"]:checked ~ .slidewrap .slidelist > li {transform:translateX(-200%);}
-	</style>
+	
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@400;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href = "main.css">
 </head>
 <body>
+	<div class="title">
+		<br>
+		<h1 class="h1tag">Remember my beautiful memories</h1>
+		<br>
+		<a class="btn" href="https://github.com/dwkang92" target="_blank">Github</a>
+	</div>
+	<div class="box">
+	<div class="map" id="map"></div>
+<div class="story">
 	<div class="section">
-		<input type="radio" name="slide" id="slide01" checked>
-		<input type="radio" name="slide" id="slide02">
-		<input type="radio" name="slide" id="slide03">
-
+			<input type="radio" name="slide" id="slide01" checked>
+			<input type="radio" name="slide" id="slide02">
+			<input type="radio" name="slide" id="slide03">		
 		<div class="slidewrap">
 			<ul class="slidelist">
 				<li>
@@ -60,7 +47,46 @@
 					</a>
 				</li>
 			</ul>
+			
 		</div>
 	</div>
+		<h2>Univeristy of Tsukuba</h2>
+		<h3>1 Chome-1ｰ1 Tennodai, Tsukuba, Ibaraki 305-8577</h3>
+		<br>
+		<p>
+			My beautiful memories in Japan with my family.
+			<br>
+			If i could go back to that time, i would spend more time with my family.
+			Mom, i miss you so much. 
+			<br>
+			I'm spending every moment faithfully that you wished for.
+		</p>
+</div>
+</div>
+<script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=2861e5ea93ef4ea612b521b01e617d00"></script>
+<script>
+var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+    mapOption = { 
+        center: new kakao.maps.LatLng(37.50687271157013, 127.00067175766782), // 지도의 중심좌표
+        level: 4 // 지도의 확대 레벨
+    };
+
+var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+var imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png', // 마커이미지의 주소입니다    
+    imageSize = new kakao.maps.Size(64, 69), // 마커이미지의 크기입니다
+    imageOption = {offset: new kakao.maps.Point(27, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+      
+// 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
+var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
+    markerPosition = new kakao.maps.LatLng(37.50687271157013, 127.00067175766782); // 마커가 표시될 위치입니다
+
+// 마커를 생성합니다
+var marker = new kakao.maps.Marker({
+	map: map,
+    position: markerPosition, 
+    image: markerImage // 마커이미지 설정 
+});
+</script>
 </body>
 </html>
