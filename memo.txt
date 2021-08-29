@@ -1,2 +1,0 @@
-Google Map API / g:
-Kakao Map API: 
